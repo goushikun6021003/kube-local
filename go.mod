@@ -1,4 +1,4 @@
-module kube-local
+module github.com/goushikun6021003/kube-local
 
 go 1.14
 
