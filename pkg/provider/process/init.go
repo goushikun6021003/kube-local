@@ -5,7 +5,7 @@ import (
 
 	"github.com/BurntSushi/toml"
 
-	"kube-local/pkg/model"
+	"github.com/goushikun6021003/kube-local/pkg/model"
 )
 
 func Init(confPath string) {

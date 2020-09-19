@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"kube-local/pkg/model"
+	"github.com/goushikun6021003/kube-local/pkg/model"
 )
 
 

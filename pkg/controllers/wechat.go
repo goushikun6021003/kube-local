@@ -9,7 +9,7 @@ import (
 	"net/url"
 	"encoding/json"
 
-	"kube-local/pkg/model"
+	"github.com/goushikun6021003/kube-local/pkg/model"
 )
 
 type WText struct {

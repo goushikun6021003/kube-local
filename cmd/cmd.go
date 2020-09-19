@@ -1,8 +1,9 @@
 package cmd
 import (
 	"flag"
-	"kube-local/pkg/provider/process"
-	"kube-local/pkg/rpc"
+
+	"github.com/goushikun6021003/kube-local/pkg/provider/process"
+	"github.com/goushikun6021003/kube-local/pkg/rpc"
 )
 
 var confPath = flag.String("conf", "./configs/config.toml", "The path of config.")

@@ -7,7 +7,7 @@ import (
 
 	"github.com/go-gomail/gomail"
 
-	"kube-local/pkg/model"
+	"github.com/goushikun6021003/kube-local/pkg/model"
 )
 
 // SendEmail

@@ -1,6 +1,6 @@
 package main
 
-import "kube-local/cmd"
+import "github.com/goushikun6021003/kube-local/cmd"
 
 func main() {
 	cmd.Run()

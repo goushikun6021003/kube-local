@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"net/rpc"
 
-	"kube-local/pkg/controllers"
-	"kube-local/pkg/model"
+	"github.com/goushikun6021003/kube-local/pkg/controllers"
+	"github.com/goushikun6021003/kube-local/pkg/model"
 )
 type Sender int
 
