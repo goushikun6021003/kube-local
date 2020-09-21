@@ -13,32 +13,32 @@ type TomlConfig struct {
 }
 
 type Slack struct {
-	Open int    `toml:"open-slack"`
-	Url  string `toml:"slackurl"`
+	Open int    `toml:"openSlack"`
+	Url  string `toml:"slackUrl"`
 }
 
 type Mail struct {
-	Open     int    `toml:"open-email"`
-	Host     string `toml:"Email_host"`
-	Port     int    `toml:"Email_port"`
-	User     string `toml:"Email_user"`
-	Password string `toml:"Email_password"`
-	Title    string `toml:"Email_title"`
-	Emails   string `toml:"Default_emails"`
+	Open     int    `toml:"openEmail"`
+	Host     string `toml:"emailHost"`
+	Port     int    `toml:"emailPort"`
+	User     string `toml:"emailUser"`
+	Password string `toml:"emailPassword"`
+	Title    string `toml:"emailTitle"`
+	Emails   string `toml:"defaultEmails"`
 }
 
 type Lark struct {
-	Open int    `toml:"open-lark"`
-	Url  string `toml:"larkurl"`
+	Open int    `toml:"openLark"`
+	Url  string `toml:"larkUrl"`
 }
 
 type Dingding struct {
-	Open int    `toml:"open-dingding"`
-	Url  string `toml:"ddurl"`
-	All  int    `toml:"dd_isatall"`
+	Open int    `toml:"openDingding"`
+	Url  string `toml:"ddUrl"`
+	All  int    `toml:"ddIsAtAll"`
 }
 
 type Wechat struct {
-	Open int    `toml:"open-wechat"`
-	Url  string `toml:"wechaturl"`
+	Open int    `toml:"openWechat"`
+	Url  string `toml:"wechatUrl"`
 }
