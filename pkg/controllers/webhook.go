@@ -15,7 +15,10 @@ import (
 func PostToWebhook(webhook string, text interface{}) (results string) {
 	// 序列化Message
 	b := new(bytes.Buffer)
-	json.NewEncoder(b).Encode(text)
+	err := json.NewEncoder(b).Encode(text)
+	if err != nil {
+		log.Println(err.Error())
+	}
 	log.Println(b)
 	// 发起连接请求
 	var tr *http.Transport

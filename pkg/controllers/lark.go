@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 
 	"github.com/goushikun6021003/kube-local/pkg/model"
@@ -26,8 +27,9 @@ func PostToLark(ruler *model.Ruleser) string {
 	// 判断接口是否打开
 	open := lark.Open
 	if open == 0 {
-		log.Println("[lark]", "lark接口未配置未开启状态,请先配置open-lark为1")
-		return "lark接口未配置未开启状态,请先配置open-lark为1"
+		log.Println("[lark]", "lark接口未配置未开启状态,请先配置openLark为1")
+		msg := fmt.Sprintf("lark接口未配置未开启状态,请先配置openLark为1")
+		return msg
 	}
 	// 初始化Message
 	u := LarkMessage{
@@ -38,7 +40,8 @@ func PostToLark(ruler *model.Ruleser) string {
 	result := PostToWebhook(lark.Url, u)
 
 	model.AlertToCounter.WithLabelValues("Lark", string(rulerJson), "").Add(1)
-	log.Println("Lark" + result)
+	log.Println("Lark " + result)
 
-	return result
+	msg := fmt.Sprintf("Lark: %s", result)
+	return msg
 }

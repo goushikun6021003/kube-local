@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 
 	"github.com/goushikun6021003/kube-local/pkg/model"
@@ -27,7 +28,8 @@ func PostToWechat(ruler *model.Ruleser) string {
 	open := wechat.Open
 	if open == 0 {
 		log.Println("[wechat]", "企业微信接口未配置未开启状态,请先配置open-wechat为1")
-		return "企业微信接口未配置未开启状态,请先配置open-wechat为1"
+		msg := fmt.Sprintf("企业微信接口未配置未开启状态,请先配置openWechat为1")
+		return msg
 	}
 	// 初始化Message
 	u := WechatMessage{
@@ -38,7 +40,8 @@ func PostToWechat(ruler *model.Ruleser) string {
 	result := PostToWebhook(wechat.Url, u)
 
 	model.AlertToCounter.WithLabelValues("Wechat", string(rulerJson), "").Add(1)
-	log.Println("Wechat" + result)
+	log.Println("Wechat " + result)
 
-	return result
+	msg := fmt.Sprintf("Wechat: %s", result)
+	return msg
 }

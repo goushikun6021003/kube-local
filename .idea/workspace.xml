@@ -20,13 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17313fd7-bdf4-4961-a60e-8441040f6767" name="Default Changelist" comment="Update">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/model/rule.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/model/rule.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/controllers/dingding.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/controllers/dingding.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/controllers/lark.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/controllers/lark.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/controllers/mail.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/controllers/mail.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/controllers/slack.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/controllers/slack.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/controllers/webhook.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/controllers/webhook.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/controllers/wechat.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/controllers/wechat.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/rpc/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/rpc/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/tests/config.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/tests/config.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/tests/dingding_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/tests/dingding_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +169,9 @@
     <MESSAGE value="封装发送函数" />
     <MESSAGE value="封装构造数据函数" />
     <MESSAGE value="switch有具体语义" />
-    <option name="LAST_COMMIT_MESSAGE" value="switch有具体语义" />
+    <MESSAGE value="switch的case有具体语义" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

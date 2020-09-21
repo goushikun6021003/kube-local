@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 
 	"github.com/goushikun6021003/kube-local/pkg/model"
@@ -34,7 +35,8 @@ func PostToDingDing(ruler *model.Ruleser) string {
 	open := Dingding.Open
 	if open == 0 {
 		log.Println("[dingding]", "钉钉接口未配置未开启状态,请先配置openDingding为1")
-		return "钉钉接口未配置未开启状态,请先配置openDingding为1"
+		msg := fmt.Sprintf("钉钉接口未配置未开启状态,请先配置openDingding为1")
+		return msg
 	}
 	// 判断是否@全部人
 	isAtAll := Dingding.All
@@ -53,7 +55,8 @@ func PostToDingDing(ruler *model.Ruleser) string {
 	result := PostToWebhook(Dingding.Url, u)
 
 	model.AlertToCounter.WithLabelValues("Dingding", string(rulerJson), "").Add(1)
-	log.Println("Dingding" + result)
+	log.Println("Dingding " + result)
 
-	return result
+	msg := fmt.Sprintf("Dingding: %s", result)
+	return msg
 }

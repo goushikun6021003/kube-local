@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"strings"
 
@@ -35,7 +36,8 @@ func SendEmail(ruler *model.Ruleser) string {
 	open := mail.Open
 	if open == 0 {
 		log.Println("[email]", "email未配置未开启状态,请先配置open-email为1")
-		return "eamil未配置未开启状态,请先配置open-email为1"
+		msg := fmt.Sprintf("email接口未配置未开启状态,请先配置openEmail为1")
+		return msg
 	}
 
 	//Emails= xxx1@qq.com,xxx2@qq.com,xxx3@qq.com
