@@ -1,13 +1,8 @@
 package controllers
 
 import (
-	"bytes"
-	"crypto/tls"
 	"encoding/json"
-	"io/ioutil"
 	"log"
-	"net/http"
-	"net/url"
 
 	"github.com/goushikun6021003/kube-local/pkg/model"
 )
@@ -22,7 +17,7 @@ type At struct {
 }
 
 type DDMessage struct {
-	Msgtype string `json:"msgtype"`
+	MsgType string `json:"msgtype"`
 	Text    DdText `json:"text"`
 	At      At     `json:"at"`
 }
@@ -38,54 +33,27 @@ func PostToDingDing(ruler *model.Ruleser) string {
 	// 判断接口是否打开
 	open := Dingding.Open
 	if open == 0 {
-		log.Println("[dingding]", "钉钉接口未配置未开启状态,请先配置open-dingding为1")
-		return "钉钉接口未配置未开启状态,请先配置open-dingding为1"
+		log.Println("[dingding]", "钉钉接口未配置未开启状态,请先配置openDingding为1")
+		return "钉钉接口未配置未开启状态,请先配置openDingding为1"
 	}
 	// 判断是否@全部人
-	Isatall := Dingding.All
-	Atall := true
-	if Isatall == 0 {
-		Atall = false
+	isAtAll := Dingding.All
+	atAll := true
+	if isAtAll == 0 {
+		atAll = false
 	}
 	// 初始化Message
 	u := DDMessage{
 		"text",
 		DdText{string(rulerJson)},
-		At{[]string{""}, Atall},
+		At{[]string{""}, atAll},
 	}
-	// 序列化Message
-	b := new(bytes.Buffer)
-	json.NewEncoder(b).Encode(u)
-	log.Println("[dingding]", b)
-	// 发起连接请求
-	var tr *http.Transport
-	if proxyUrl := model.Config.Proxy; proxyUrl != "" {
-		proxy := func(_ *http.Request) (*url.URL, error) {
-			return url.Parse(proxyUrl)
-		}
-		tr = &http.Transport{
-			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
-			Proxy:           proxy,
-		}
-	} else {
-		tr = &http.Transport{
-			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
-		}
-	}
-	client := &http.Client{Transport: tr}
-	res, err := client.Post(Dingding.Url, "application/json", b)
-	if err != nil {
-		log.Println("[dingding]", err.Error())
-	}
-	// 关闭连接通道
-	defer res.Body.Close()
-	// 读取返回信息
-	result, err := ioutil.ReadAll(res.Body)
-	if err != nil {
-		log.Println("[dingding]", err.Error())
-	}
-	model.AlertToCounter.WithLabelValues("dingding", string(rulerJson), "").Add(1)
-	log.Println("[dingding]", string(result))
 
-	return string(result)
+	// 发送Message至Webhook
+	result := PostToWebhook(Dingding.Url, u)
+
+	model.AlertToCounter.WithLabelValues("Dingding", string(rulerJson), "").Add(1)
+	log.Println("Dingding" + result)
+
+	return result
 }
