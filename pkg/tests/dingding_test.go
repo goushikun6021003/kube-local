@@ -1,22 +1,19 @@
 package test
 
 import (
-
+	"fmt"
 	"log"
 	"testing"
-	"fmt"
 
 	"github.com/BurntSushi/toml"
-	"kube-local/pkg/controllers"
-	"kube-local/pkg/model"
-	"kube-local/pkg/provider/process"
-
+	"github.com/goushikun6021003/kube-local/pkg/controllers"
+	"github.com/goushikun6021003/kube-local/pkg/model"
+	"github.com/goushikun6021003/kube-local/pkg/provider/process"
 )
 
 var ruler model.Ruleser
 
 func Init(confPath string) {
-
 
 	ruler = model.Ruleser{
 		Id:          1,
@@ -26,12 +23,12 @@ func Init(confPath string) {
 		For:         "5",
 		Summary:     "6",
 		Description: "7",
-		Prom:        &model.Proms{
+		Prom: &model.Proms{
 			Id:   8,
 			Name: "9",
 			Url:  "10",
 		},
-		Plan:        &model.Plans{
+		Plan: &model.Plans{
 			Id:          11,
 			RuleLabels:  "12",
 			Description: "13",
@@ -67,18 +64,16 @@ func TestSlack(t *testing.T) {
 	fmt.Print(controllers.PostToSlack(&ruler))
 }
 
-func TestWeChat(t *testing.T)  {
+func TestWeChat(t *testing.T) {
 	//title := "哆啦A梦告警"
 	Init("config.toml")
 
 	fmt.Print(controllers.PostToWechat(&ruler))
 }
 
-func TestEmail(t *testing.T)  {
+func TestEmail(t *testing.T) {
 	//title := "哆啦A梦告警"
 	Init("config.toml")
 
-
 	fmt.Print(controllers.SendEmail(&ruler))
 }
-
