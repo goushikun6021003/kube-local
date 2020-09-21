@@ -1,6 +1,7 @@
 #设置代理 proxy = http://123.123.123.123:8080
 proxy = ""
-
+# RPC Server Port
+port = ":8888"
 [slack]
     #是否开启slack告警通道,可同时开始多个通道0为关闭,1为开启
     open-slack=1

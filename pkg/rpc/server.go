@@ -1,15 +1,16 @@
 package rpc
 
 import (
+	"errors"
 	"log"
 	"net"
-	"errors"
 	"net/http"
 	"net/rpc"
 
 	"github.com/goushikun6021003/kube-local/pkg/controllers"
 	"github.com/goushikun6021003/kube-local/pkg/model"
 )
+
 type Sender int
 
 func (s *Sender) SendMessage(recvData *model.RecvData, reply *string) error {
@@ -37,20 +38,14 @@ func (s *Sender) SendMessage(recvData *model.RecvData, reply *string) error {
 	return nil
 }
 
-func Init()  {
+func Init() {
 	sender := new(Sender)
 	rpc.Register(sender)
 	rpc.HandleHTTP()
-	l, e := net.Listen("tcp", ":8888")
+	l, e := net.Listen("tcp", model.Config.Port)
 	if e != nil {
 		log.Fatal("listen error:", e)
 	}
 	//go http.Serve(l, nil)
 	http.Serve(l, nil)
 }
-
-
-
-
-
-
